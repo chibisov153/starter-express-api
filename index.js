@@ -7,14 +7,14 @@ const app = express()
 const server = createServer(app)
 const io = new Server(server)
 
-app.all('/', (req, res) => {
-	console.log('Just got a request!')
-	res.send('Yo!')
-})
-
-// app.get('/', (req, res) => {
-// 	res.sendFile(join(__dirname, 'index.html'))
+// app.all('/', (req, res) => {
+// 	console.log('Just got a request!')
+// 	res.send('Yo!')
 // })
+
+app.get('/', (req, res) => {
+	res.sendFile(join(__dirname, 'index.html'))
+})
 
 io.on('connection', socket => {
 	console.log('Connection', socket.id)
